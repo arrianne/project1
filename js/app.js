@@ -3,23 +3,20 @@ $(() => {
   const $timer = $('#timer');
   const $button = $('button');
   const $cells = $('.cell');
-  let score =0;
+  let score = 0;
 
+//timer
 
-
-
-  //timer
-
-
-
-  // var userScore = 0;
   var timer = 30;
-  // let timerId = setInterval;
 
   $button.on('click', startTimer);
 
 
   function startTimer() {
+
+    // reset score to 0
+    // reset timer to 30
+    // update the HTML to reflect these changes
 
     const timerId = setInterval(() => {
       RandomMoleGenerator();
@@ -28,8 +25,10 @@ $(() => {
         if (!$(e.target).hasClass('mole')){
           return;
         }
-
+//Adding 1 to the players score everytime the mole class is clicked
         score++;
+        console.log(score);
+        $('#scoredisplay').text(score);
         $(e.target).removeClass('mole');
 
       });
@@ -57,12 +56,5 @@ $(() => {
 
 
 
-
-
-
-
-
-
-//if cell is clicked when it is a specific colour, reset it back to blank and add 1 point to players score.
 
 });

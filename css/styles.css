@@ -39,8 +39,9 @@ li {
 
   font-size: 100px;
   text-align: center;
-  line-height: 140px;
+  line-height: 140px; }
 
 .mole {
-  color: blue;
+  background-color: blue;
+  cursor: pointer;
 }

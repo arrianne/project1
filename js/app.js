@@ -1,26 +1,51 @@
 $(() => {
 
-  const $timer = $('.timer');
+  const $timer = $('#timer');
   const $button = $('button');
-  const listElements = $('li');
+  const $li = $('li');
 
 
-  const chosenIndex = Math.random(listElements.length);
-  listElements.eq(chosenIndex).css(backgroundColor: 'red')
-
-
-//create an array of elements I'll change using their id's.
-
-// then choose a random number up to the length of that array
-//Math.rand(listElements.length)
-//then change the colour of that element.
+  // $('li').on('click', function(event){
+  //   console.log('clicked');
+  // });
 
 
 
+  //timer
 
 
 
-//Timer
-//start at 30 seconds and count down
+  // var userScore = 0;
+  var timer = 30;
+  let timerId = setInterval;
+
+  $button.on('click', startTimer);
+
+
+  function startTimer() {
+    RandomMoleGenerator();
+    const timerId = setInterval(() => {
+      timer--;
+      $timer.text(timer);
+      console.log(timer);
+
+      if(timer === 0) {
+        clearInterval(timerId);
+        timer = 30;
+      }
+    }, 1000);
+  }
+
+
+
+  function RandomMoleGenerator () {
+
+    const mole = Math.floor(Math.random()*$('div').length);
+    $('.cell').eq(mole).addClass('mole');
+  }
+
+
+
+//if cell is clicked when it is a specific colour, reset it back to blank and add 1 point to players score.
 
 });

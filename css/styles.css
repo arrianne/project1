@@ -1,3 +1,42 @@
 body {
-  background: red;
+
+  text-align: center;
 }
+
+main {
+  margin: 50px;
+}
+
+
+.board {
+  /*background: black;*/
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+
+}
+
+ul {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  border: 1px solid black;
+  display: inline-block;
+  margin: 0;
+  /*border: 0;*/
+  padding: 0;
+  box-sizing: border-box;
+  background: white;
+  width: 140px;
+  height: 140px;
+
+
+  font-size: 100px;
+  text-align: center;
+  line-height: 140px;

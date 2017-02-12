@@ -12,11 +12,17 @@ $(() => {
   $button.on('click', startTimer);
 
 
-  function startTimer() {
 
-    // reset score to 0
-    // reset timer to 30
+
+  function startTimer() {
+    //resetting the score to zero
+    score = 0;
+    $('#scoredisplay').text(score);
+    //resetting the timer to 30
+    timer = 30;
+    $('#scoredisplay').text(score);
     // update the HTML to reflect these changes
+    $('button', this).text('Restart');
 
     const timerId = setInterval(() => {
       RandomMoleGenerator();

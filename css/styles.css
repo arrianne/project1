@@ -9,6 +9,58 @@ main {
 }
 
 
+#Intro {
+  width: 600px;
+  height: 1000px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+h1 {
+   color: rgb(51, 204, 51);
+
+}
+
+/*intro screen styling*/
+#easy {
+  color: rgb(51, 204, 51);
+  background-color: black;
+  font-family: joystix;
+  font-size: 20px;
+  width: 270px;
+  height: 50px;
+  border-width: thick;
+  border-color: rgb(51, 204, 51);
+  text-decoration: none;
+}
+
+#medium {
+  color: rgb(51, 204, 51);
+  background-color: black;
+  font-family: joystix;
+  font-size: 20px;
+  width: 270px;
+  height: 50px;
+  border-width: thick;
+  border-color: rgb(51, 204, 51);
+}
+
+#hard {
+  color: rgb(51, 204, 51);
+  background-color: black;
+  font-family: joystix;
+  font-size: 20px;
+  width: 270px;
+  height: 50px;
+  border-width: thick;
+  border-color: rgb(51, 204, 51);
+}
+
+
+
+
+/*gameBoard styling*/
+
 .board {
   /*background: black;*/
   width: 700px;
@@ -25,6 +77,7 @@ main {
   height: 50px;
   border-width: thick;
   border-color: rgb(51, 204, 51);
+  text-decoration: none;
   animation: myframes 1s ease-in-out 0s alternate infinite;
 }
 

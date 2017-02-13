@@ -5,11 +5,20 @@ $(() => {
   const $cells = $('.cell');
   let score = 0;
 
+
+
+
+
+
 //timer
 
-  var timer = 30;
+  var timer = 5;
 
   $button.on('click', startTimer);
+
+  //button only to be pressed once until the time runs out
+
+
 
 
 
@@ -19,10 +28,14 @@ $(() => {
     score = 0;
     $('#scoredisplay').text(score);
     //resetting the timer to 30
-    timer = 30;
+    timer = 5;
     $('#scoredisplay').text(score);
-    // update the HTML to reflect these changes
-    $('button', this).text('Restart');
+
+
+
+
+
+
 
     const timerId = setInterval(() => {
       RandomMoleGenerator();
@@ -44,9 +57,19 @@ $(() => {
 
       if(timer === 0) {
         clearInterval(timerId);
-        timer = 30;
+        // timer = 5;
+        // update the button text:
+        $button.text('Replay');
+        $button.show();
       }
     }, 1000);
+
+    //hiding the start button so it can't be pressed during the game. I feel like this can be done in a neater way hmmm.
+    $button.hide();
+    setTimeout(()=>{
+      $button.show();
+    },timer*5000);
+
   }
 
 
@@ -60,7 +83,10 @@ $(() => {
     },1000);
   }
 
-
+//create end game function which fills ul with bat logo and score?
 
 
 });
+//make speed a variable and put it into a function for selected difficulties chosen from intro screen.
+
+// var speed =

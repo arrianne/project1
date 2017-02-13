@@ -19,6 +19,7 @@ main {
 .typewriter {
   color: rgb(51, 204, 51);
   font-family: joystix;
+  padding: 150px;
 
 
 }
@@ -78,6 +79,22 @@ h1 {
 
 }
 
+#riddled {
+  color: rgb(51, 204, 51);
+  background-color: black;
+  font-family: joystix;
+  font-size: 20px;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  width: 270px;
+  height: 50px;
+  text-decoration: none;
+  animation: myframes 1s ease-in-out 0s alternate infinite;
+  border: 4px solid rgb(51, 204, 51);
+  padding: 8px;
+  display: inline;
+  margin: 2px;
+}
 
 
 
@@ -102,6 +119,8 @@ h1 {
   border: 4px solid rgb(51, 204, 51);
   padding: 8px;
   display: inline;
+  margin: 2px;
+
 
 }
 .difficultyButton {
@@ -111,12 +130,13 @@ h1 {
   font-size: 20px;
   width: 270px;
   height: 50px;
-  border-color: rgb(51, 204, 51);
   text-decoration: none;
   animation: myframes 1s ease-in-out 0s alternate infinite;
   border: 4px solid rgb(51, 204, 51);
   padding: 8px;
   display: inline;
+  margin: 2px;
+
 
 }
 

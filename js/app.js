@@ -9,6 +9,7 @@ $(() => {
   const $easy = $('#easy');
   const $medium = $('#medium');
   const $hard = $('#hard');
+  const $riddled = $('#riddled');
 
 
 //Making intro text appear gradually
@@ -34,6 +35,7 @@ $(() => {
   }());
 //End of intro text
 
+//setting the speed for each difficulty level
 
   $easy.on('click', () => {
     speed = 2000;
@@ -47,7 +49,28 @@ $(() => {
     speed = 400;
     $button.text('Start Game');
   });
+  $riddled.on('click', () => {
+    speed = Math.random(2000);
+    $button.text('Start Game');
+  });
 
+//slowing down href
+
+
+  $(document).ready(function(){
+    $('a[href^="#"]').on('click',function (e) {
+      e.preventDefault();
+
+      var target = this.hash;
+      var $target = $(target);
+
+      $('html, body').stop().animate({
+        'scrollTop': $target.offset().top
+      }, 1500, 'swing', function () {
+        window.location.hash = target;
+      });
+    });
+  });
 
 
 //timer
@@ -122,20 +145,7 @@ $(() => {
 
 
 
-
-
-
-
-
-// if the button with the class of easy is clicked then change the mole speed to 1000
-// if the medium button with the class of medium is clicked then change the mole speed to 800
-// if the hard button with the class of hard is clicked then change the mole speed to 600
-
-
-
-
-
 });
-//make speed a variable and put it into a function for selected difficulties chosen from intro screen.
+
 
 //create end game function which fills ul with bat logo and score?

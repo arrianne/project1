@@ -10,9 +10,11 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
+
     <main>
+
       <div id="intro">
-       <p class="typewriter">Hello Batman, we meet again</p>
+       <p class="typewriter">Riddle me this, riddle me that, who's afraid of the big, black bat? Catch me if you can Batman</p>
        <a id="easy" href="#gameBoard">Easy</a>
        <a id="medium" href="#gameBoard">Medium</a>
        <a id="hard" href="#gameBoard">Hard</a>
@@ -25,7 +27,7 @@
         <button class="startButton">Start Game</button>
         <a class="difficultyButton" href="#intro">Choose Difficulty?</a>
         <div id="scoreboard">
-          Score:<p id="scoredisplay">0</p>
+          <p id="scoredisplay">Score: 0</p>
         </div>
         <div class="board">
           <ul>
@@ -47,6 +49,12 @@
             <li class="cell" id="15"></li>
           </ul>
         </div>
+
+        <div>
+          <audio id="riddler" src="CSS/sound/riddler_laugh.wav" type="audio/wav">
+         </audio>
+        </div>
+
       </div>
 
 

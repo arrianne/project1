@@ -10,6 +10,9 @@ $(() => {
   const $medium = $('#medium');
   const $hard = $('#hard');
   const $riddled = $('#riddled');
+  // const $riddler = $('riddler');
+
+
 
 
 //Making intro text appear gradually
@@ -31,7 +34,7 @@ $(() => {
         clearTimeout(timeOut);
       }
 
-    }, 200);
+    }, 100);
   }());
 //End of intro text
 
@@ -39,7 +42,9 @@ $(() => {
 
   $easy.on('click', () => {
     speed = 2000;
+    // $riddler[0].play();
     $button.text('Start Game');
+
   });
   $medium.on('click', () => {
     speed = 900;
@@ -50,7 +55,7 @@ $(() => {
     $button.text('Start Game');
   });
   $riddled.on('click', () => {
-    speed = Math.random(2000);
+    speed = Math.floor(Math.random() * (2000 - 400)) + 400;
     $button.text('Start Game');
   });
 
@@ -95,18 +100,48 @@ $(() => {
 
 
 
+
+
     const timerId = setInterval(() => {
       RandomMoleGenerator();
       //removing the mole class when clicked
       $('.cell').click(function(e) {
-        if (!$(e.target).hasClass('mole')){
+        const hit = $(e.target);
+        if (!hit.hasClass('mole')){
           return;
         }
 //Adding 1 to the players score everytime the mole class is clicked
         score++;
         console.log(score);
         $('#scoredisplay').text(score);
-        $(e.target).removeClass('mole');
+
+//possibly adding another thing for player to click that will take away points
+
+  //       RandomBombGenerator();
+  //       //removing the mole class when clicked
+  //       $('.cell').click(function(e) {
+  //         const hit = $(e.target);
+  //         if (!hit.hasClass('bomb')){
+  //           return;
+  //         }
+  // //Adding 1 to the players score everytime the mole class is clicked
+  //         score--;
+  //         console.log(score);
+  //         $('#scoredisplay').text(score);
+
+
+
+//bringing up the bat image when you hit mole
+        function showBat() {
+          setTimeout(function(){
+            hit.removeClass('bat');
+          }, 300);
+        }
+
+        hit.removeClass('mole').addClass('bat');
+        showBat();
+
+
 
       });
       timer--;
@@ -123,7 +158,7 @@ $(() => {
       }
     }, speed);
 
-    //hiding the start button so it can't be pressed during the game. I feel like this can be done in a neater way hmmm.
+    //hiding the start button so it can't be pressed during the game.
     $difficultyButton.hide();
     $button.hide();
     setTimeout(()=>{
@@ -143,7 +178,14 @@ $(() => {
   }
 
 
-
+  // function RandomBombGenerator () {
+  //   const mole = Math.floor(Math.random()*$('.cell').length);
+  //   $cells.eq(bomb).addClass('bomb');
+  //   setTimeout(function() {
+  //     $cells.eq(bomb).removeClass('bomb');
+  //   },speed);
+  // }
+  //
 
 });
 

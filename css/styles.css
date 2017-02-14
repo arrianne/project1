@@ -2,6 +2,8 @@ body {
 
   text-align: center;
   background-color: black;
+
+
 }
 
 main {
@@ -12,14 +14,23 @@ main {
 #intro {
   width: 600px;
   height: 1000px;
-  background-color: black;
+
   margin: 0 auto;
+  /*background: no-repeat center center;
+  background-image:url(yourimage.jpg);
+  background-position:center;*/
+
 }
 
 .typewriter {
   color: rgb(51, 204, 51);
   font-family: joystix;
   padding: 150px;
+
+
+}
+
+
 
 
 }
@@ -158,14 +169,15 @@ h1 {
 #scoredisplay {
   font-family: joystix;
   color:rgb(51, 204, 51);
-  font-size:30px;
+  font-size:20px;
   margin: 10px;
+  padding: 20px;
 
 }
 #scoreboard {
   font-family: joystix;
   color:rgb(51, 204, 51);
-  font-size:20px;
+  font-size:16px;
   margin-top: 10px;
 }
 
@@ -178,6 +190,7 @@ ul {
   outline-color: rgb(51, 204, 51);
   padding: 0;
   box-sizing: border-box;
+
 }
 
 li {
@@ -192,15 +205,34 @@ li {
   background-size: 120px 120px;
   width: 140px;
   height: 140px;
-
-
+  position: relative;
+  overflow: hidden;
   font-size: 100px;
   text-align: center;
-  line-height: 140px; }
+  line-height: 140px;
+}
 
-.mole {
+li:after {
+  content: "";
+  position: absolute;
+  top:140px ;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-image: url("images/riddlerface.jpg");
   background-position: center;
   background-size: 120px 120px;
   cursor: url('images/batman.png'), auto;
+  transition: all 0.2s ease;
+}
+
+li.mole:after {
+  top: 0;
+}
+
+.bat {
+  background-image: url("images/batman.png");
+}
+.bomb {
+  background-image: url("images/bomb.jpg")
 }

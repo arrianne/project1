@@ -235,7 +235,8 @@ li.bomb:after {
 }
 
 .bat {
-  background-image: url("images/batman.png");
+  background-image: url("images/batmanlogo.png");
+  background-size: 160px;
 }
 .bomb:after {
   background-image: url("images/bomb.jpg")

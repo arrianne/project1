@@ -122,12 +122,12 @@ $(() => {
           // return;
           score--;
           console.log(score);
-          $('#scoredisplay').text(score);
+          $('#scoredisplay').text('score: ' + score);
         }
 
         if(hit.hasClass('mole') || hit.hasClass('bomb')) {
           clearTimeout(bombOrMoleTimer);
-          hit.removeClass(bombOrMole);
+          hit.removeClass('mole bomb');
           hit.addClass('bat');
           setTimeout(function(){
             hit.removeClass('bat');
@@ -141,11 +141,14 @@ $(() => {
 
       if(timer === 0) {
         clearInterval(timerId);
+
+
         // timer = 5;
         // update the button text:
         $button.text('Replay');
         $button.show();
         $difficultyButton.show();
+
 
       }
     }, speed);
@@ -159,7 +162,7 @@ $(() => {
   }
 
 
-//picks random cells to change
+  //picks random cells to change
 
   function RandomGenerator () {
     //this chooses random cell to generate mole or bomb
@@ -172,7 +175,7 @@ $(() => {
 
     $cells.eq(cell).addClass(bombOrMole);
     bombOrMoleTimer = setTimeout(() => {
-      $cells.eq(cell).removeClass(bombOrMole);
+      $cells.eq(cell).removeClass('bomb mole');
     },speed);
 
   }

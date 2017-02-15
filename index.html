@@ -14,7 +14,7 @@
     <main>
 
       <div id="intro">
-       <p class="typewriter">Riddle me this, riddle me that, who's afraid of the big, black bat? Catch me if you can Batman</p>
+       <p class="typewriter">Riddle me this.. riddle me that... who's afraid of the big, black bat? <br> Catch me if you can Batman</p>
        <a id="easy" href="#gameBoard">Easy</a>
        <a id="medium" href="#gameBoard">Medium</a>
        <a id="hard" href="#gameBoard">Hard</a>
@@ -50,10 +50,13 @@
           </ul>
         </div>
 
-        <div>
-          <audio id="riddler" src="CSS/sound/riddler_laugh.wav" type="audio/wav">
-         </audio>
-        </div>
+        <audio id="riddlerSound">
+          <source src="sounds/riddlerSound.wav" type="audio/mp3">
+        </audio>
+
+        <audio id="riddleMe" autoplay>
+          <source src="sounds/riddleme.wav" type="audio/mp3">
+        </audio>
 
       </div>
 

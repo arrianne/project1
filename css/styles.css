@@ -40,9 +40,21 @@ h1 {
 
 }
 
-.winner {
-  color: rgb(51, 204, 51);
-  font-size: 20px;
+.batlogo {
+  position: relative;
+  padding: 60px;
+
+}
+
+.finalScoreDisplay {
+  color: rgb(140, 140, 140);
+  font-size: 40px;
+  font-family: joystix;
+  position: absolute;
+  top: 175px;
+  left: 20px;
+  width: 100%;
+
 }
 
 /*intro screen styling*/
@@ -257,6 +269,7 @@ li.bomb:after {
     display: block;
     width: 270px;
     height: 30px;
+    margin: 10px;
 
 
 }
@@ -266,6 +279,7 @@ li.bomb:after {
    display: block;
    width: 270px;
    height: 30px;
+   margin: 10px;
 
 
  }
@@ -275,6 +289,7 @@ li.bomb:after {
    display: block;
    width: 270px;
    height: 30px;
+   margin: 10px;
 
 
  }
@@ -284,6 +299,7 @@ li.bomb:after {
    display: block;
    width: 270px;
    height: 30px;
+   margin: 10px;
 
 
 
@@ -297,8 +313,35 @@ li.bomb:after {
    text-align: center;
    width: 270px;
 
+   ul {
+     display: block;
+     margin: auto;
+     max-width: 70px;
 
+   }
 
+   li {
+     display: block;
+   }
 
- }
+   .startButton {
+
+     font-size: 25px;
+     display: block;
+     width: 270px;
+     height: 30px;
+     margin: 10px;
+
+  }
+
+   .difficultyButton {
+
+     font-size: 25px;
+     display: block;
+     width: 270px;
+     height: 30px;
+     margin: 10px;
+
+  }
+
  }

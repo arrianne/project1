@@ -10,10 +10,11 @@ $(() => {
   const $medium = $('#medium');
   const $hard = $('#hard');
   const $riddled = $('#riddled');
-  const $winner = $('.winner');
+  const $finalScoreDisplay = $('.finalScoreDisplay');
+  const $batlogo =$('.batlogo');
   var $riddlerSound = $('#riddlerSound');
   var timer = 30;
-  // var $riddleMe = $('#riddleMe');
+
   //typewriter text
   var text = $('.typewriter').text();
   var length = text.length;
@@ -94,8 +95,8 @@ $(() => {
 
 
 
-  $( '.winner').hide();
-
+  $('.finalScoreDisplay').text('score: ' + score).hide();
+  $('.batlogo').hide();
   $button.on('click', startTimer);
 
   //button only to be pressed once until the time runs out
@@ -107,7 +108,9 @@ $(() => {
     //resetting the timer to 30
     timer = 30;
     //hiding the end message
-    $( '.winner').hide();
+    $('.finalScoreDisplay').text('score: ' + score).hide();
+    $('.batlogo').hide();
+    $( '#scoredisplay').show();
     $( '.cell').show();
     const timerId = setInterval(() => {
       RandomGenerator();
@@ -154,8 +157,9 @@ $(() => {
         $button.show();
         $difficultyButton.show();
         $( '.cell').hide();
-        $( '.winner').show();
-
+        $( '#scoredisplay').hide();
+        $('.finalScoreDisplay').text('score: ' + score).show();
+        $('.batlogo').show();
       }
     }, speed);
 

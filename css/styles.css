@@ -262,7 +262,8 @@ li.bomb:after {
 
 /*responsive*/
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 767px) {
+
 
   #medium {
     font-size: 25px;
@@ -270,6 +271,9 @@ li.bomb:after {
     width: 270px;
     height: 30px;
     margin: 10px;
+    right: auto;
+    left: auto;
+    transform: translate(-50%, -50%);
 
 
 }
@@ -280,6 +284,9 @@ li.bomb:after {
    width: 270px;
    height: 30px;
    margin: 10px;
+   right: auto;
+   left: 100
+   transform: translate(-50%, -50%);
 
 
  }
@@ -290,6 +297,9 @@ li.bomb:after {
    width: 270px;
    height: 30px;
    margin: 10px;
+   right: auto;
+   left: auto;
+   transform: translate(-50%, -50%);
 
 
  }
@@ -300,6 +310,9 @@ li.bomb:after {
    width: 270px;
    height: 30px;
    margin: 10px;
+   right: auto;
+   left: auto;
+   transform: translate(-50%, -50%);
 
 
 

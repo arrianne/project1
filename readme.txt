@@ -12,3 +12,12 @@
 //Once the time is up, the random mole appearances should be immediately stopped.
 
 // the 'start game' button should change to 'new game' after the game commences. Clicking this button for a second time should clear the board, reset the remaining time and the score so that the player can click 'start game' once again.
+
+copyright
+brief
+instructions
+game mechanics
+design
+implementation
+challeges
+extra feature

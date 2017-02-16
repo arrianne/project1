@@ -48,7 +48,7 @@ h1 {
 
 .finalScoreDisplay {
   color: rgb(140, 140, 140);
-  font-size: 40px;
+  font-size: 30px;
   font-family: joystix;
   position: absolute;
   top: 175px;
@@ -239,7 +239,7 @@ li:after {
   background-image: url("images/jimriddler.jpeg");
   background-position: center;
   background-size: 180px 150px;
-  cursor: url('images/batman.png'), auto;
+  cursor: url('images/batlogo.jpg'), auto;
   transition: all 0.2s ease;
 }
 
@@ -252,7 +252,7 @@ li.bomb:after {
 }
 
 .bat {
-  background-image: url("images/batmanlogo.png");
+  background-image: url("images/batlogo.jpg");
   background-size: 160px;
 }
 .bomb:after {

@@ -6,14 +6,9 @@ $(() => {
   const $cells = $('.cell');
   let speed = 2000;
   let score = 0;
-  const $easy = $('#easy');
-  const $medium = $('#medium');
-  const $hard = $('#hard');
-  const $riddled = $('#riddled');
-  const $finalScoreDisplay = $('.finalScoreDisplay');
-  const $batlogo =$('.batlogo');
   var $riddlerSound = $('#riddlerSound');
   var timer = 30;
+  let timerId = null;
 
   //typewriter text
   var text = $('.typewriter').text();
@@ -24,11 +19,7 @@ $(() => {
   let bombOrMole = null;
   let bombOrMoleTimer = null;
 
-
-
-//Making intro text appear gradually
-
-
+  //Making intro text appear gradually
   (function typeWriter() {
     timeOut = setTimeout(function() {
       character++;
@@ -44,40 +35,32 @@ $(() => {
 
   }());
 
+  function scrollToGame(e) {
 
+    $('.finalScoreDisplay').text('score: ' + score).hide();
+    $('.batlogo').hide();
 
-//End of intro text
-
-//setting the speed for each difficulty level
-
-  $easy.on('click', () => {
-    speed = 2000;
-    $riddlerSound[0].play();
-    $button.text('Start Game');
-
-  });
-  $medium.on('click', () => {
-    speed = 900;
-    $riddlerSound[0].play();
-    $button.text('Start Game');
-  });
-  $hard.on('click', () => {
-    speed = 400;
-    $riddlerSound[0].play();
-    $button.text('Start Game');
-  });
-  $riddled.on('click', () => {
-    speed = Math.floor(Math.random() * (2000 - 400)) + 400;
-    $riddlerSound[0].play();
-    $button.text('Start Game');
-  });
-
-//slowing down href
-
-
-  // $(document).ready(function(){
-  $('a[href^="#"]').on('click',function (e) {
     e.preventDefault();
+
+    const level = $(e.target).attr('id');
+
+    //setting the speed for each difficulty level
+    switch(level) {
+      case 'easy':
+        speed = 2000;
+        break;
+      case 'medium':
+        speed = 900;
+        break;
+      case 'hard':
+        speed = 400;
+        break;
+      default:
+        speed = Math.floor(Math.random() * (2000 - 400)) + 400;
+    }
+
+    $riddlerSound[0].play();
+    $button.text('Start Game');
 
     var target = this.hash;
     var $target = $(target);
@@ -87,18 +70,35 @@ $(() => {
     }, 1500, 'swing', function () {
       window.location.hash = target;
     });
-  });
-  // });
+  }
 
+  $('a[href^="#"]').on('click', scrollToGame);
 
-//timer
-
-
-
-  $('.finalScoreDisplay').text('score: ' + score).hide();
-  $('.batlogo').hide();
   $button.on('click', startTimer);
 
+  function hitCell(e) {
+    const hit = $(e.target);
+    console.log(e.target);
+    if (hit.hasClass('mole')){
+      score++;
+    } else if (hit.hasClass('bomb')){
+      score--;
+    }
+
+    $('#scoredisplay').text('score: ' + score);
+
+    if(hit.hasClass('mole') || hit.hasClass('bomb')) {
+      clearTimeout(bombOrMoleTimer);
+      hit.removeClass('mole bomb');
+      hit.addClass('bat');
+      setTimeout(function(){
+        hit.removeClass('bat');
+      }, 300);
+    }
+
+  }
+
+  $('.cell').click(hitCell);
   //button only to be pressed once until the time runs out
 
   function startTimer() {
@@ -108,75 +108,34 @@ $(() => {
     //resetting the timer to 30
     timer = 30;
     //hiding the end message
-    $('.finalScoreDisplay').text('score: ' + score).hide();
-    $('.batlogo').hide();
-    $( '#scoredisplay').show();
-    $( '.cell').show();
-    const timerId = setInterval(() => {
-      RandomGenerator();
-      //removing the mole class when clicked
-      $('.cell').click(function(e) {
-        const hit = $(e.target);
-        console.log(e.target);
-        if (hit.hasClass('mole')){
-          // return;
+    $('#scoredisplay').show();
+    $('.cell').show();
 
-          //Adding 1 to the players score everytime the mole class is clicked
-          score++;
-          console.log(score);
-          $('#scoredisplay').text('score: ' + score);
-        } else if (hit.hasClass('bomb')){
-          // return;
-          score--;
-          console.log(score);
-          $('#scoredisplay').text('score: ' + score);
-        }
-
-        if(hit.hasClass('mole') || hit.hasClass('bomb')) {
-          clearTimeout(bombOrMoleTimer);
-          hit.removeClass('mole bomb');
-          hit.addClass('bat');
-          setTimeout(function(){
-            hit.removeClass('bat');
-          }, 300);
-        }
-
-      });
+    timerId = setInterval(() => {
+      randomGenerator();
       timer--;
       $timer.text(timer);
-      console.log(timer);
-
-      if(timer === 0) {
-        clearInterval(timerId);
-
-
-
-        // timer = 5;
-        // update the button text:
-        $button.text('Replay');
-        $button.show();
-        $difficultyButton.show();
-        $( '.cell').hide();
-        $( '#scoredisplay').hide();
-        $('.finalScoreDisplay').text('score: ' + score).show();
-        $('.batlogo').show();
-      }
+      if(timer === 0) endGame();
     }, speed);
 
+  }
 
-    //hiding the start button so it can't be pressed during the game.
-    $difficultyButton.hide();
-    $button.hide();
-    setTimeout(()=>{
-      $button.show();
-    },timer*30000);
+  function endGame() {
+    clearInterval(timerId);
+    $button.text('Replay');
+    $button.show();
+    $difficultyButton.show();
+    $( '.cell').hide();
+    $( '#scoredisplay').hide();
+    $('.finalScoreDisplay').text('score: ' + score).show();
+    $('.batlogo').show();
   }
 
 
 
   //picks random cells to change
 
-  function RandomGenerator () {
+  function randomGenerator () {
     //this chooses random cell to generate mole or bomb
 
     const cell = Math.floor(Math.random()*$('.cell').length);

@@ -27,7 +27,6 @@ main {
   font-family: joystix;
   padding: 150px;
 
-
 }
 
 
@@ -252,7 +251,7 @@ li.bomb:after {
 }
 
 .bat {
-  background-image: url("images/batlogo.jpg");
+  background-image: url("images/pow.png");
   background-size: 160px;
 }
 .bomb:after {

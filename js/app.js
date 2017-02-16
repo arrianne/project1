@@ -6,11 +6,12 @@ $(() => {
 
 var riddlersRevenge = riddlersRevenge || {};
 
-//Making intro text appear gradually
-riddlersRevenge.typewriter = function typeWriter() {
+// Making intro text appear gradually
+
+riddlersRevenge.typewriter = (function typeWriter() {
   const timeOut = setTimeout(function() {
     this.character++;
-    const type = this.text.substring(0, this.character);
+    var type = this.text.substring(0, this.character);
     $('.typewriter').text(type);
     typeWriter();
 
@@ -20,12 +21,12 @@ riddlersRevenge.typewriter = function typeWriter() {
 
   }, 113);
 
-};
+});
+
 
 riddlersRevenge.scrollToGame = function scrollToGame(e) {
 
-  $('.finalScoreDisplay').text('score: ' + this.score).hide();
-  $('.batlogo').hide();
+
 
   e.preventDefault();
 
@@ -34,19 +35,19 @@ riddlersRevenge.scrollToGame = function scrollToGame(e) {
   //setting the speed for each difficulty level
   switch(riddlersRevenge.level) {
     case 'easy':
-      riddlersRevenge.speed = 2000;
+      riddlersRevenge.speed = 1600;
       break;
     case 'medium':
-      riddlersRevenge.speed = 900;
+      riddlersRevenge.speed = 1200;
       break;
     case 'hard':
-      riddlersRevenge.speed = 400;
+      riddlersRevenge.speed = 1000;
       break;
     default:
       riddlersRevenge.speed = Math.floor(Math.random() * (2000 - 400)) + 400;
   }
 
-  riddlersRevenge.$riddlerSound[0].play();
+  riddlersRevenge.$laugh[0].play();
   this.$button.text('Start Game');
 
   const target = $(e.target).attr('href');
@@ -65,8 +66,10 @@ riddlersRevenge.hitCell = function hitCell(e) {
   console.log(e.target);
   if (hit.hasClass('mole')){
     this.score++;
+    riddlersRevenge.$punch[0].play();
   } else if (hit.hasClass('bomb')){
     this.score--;
+    riddlersRevenge.$explosion[0].play();
   }
 
   $('#scoredisplay').text('score: ' + riddlersRevenge.score);
@@ -83,17 +86,19 @@ riddlersRevenge.hitCell = function hitCell(e) {
 };
 
 riddlersRevenge.startTimer = function startTimer() {
+  riddlersRevenge.$tick[0].play();
   //resetting the score to zero
   this.score = 0;
   $('#scoredisplay').text('score: ' + this.score);
   //resetting the timer to 30
-  this.timer = 30;
+  this.timer = 20;
   //hiding the end message
   $('#scoredisplay').show();
   $('.cell').show();
   this.$difficultyButton.hide();
   this.$button.hide();
   $('.batlogo').hide();
+  $('.finalScoreDisplay').text('score: ' + this.score).hide();
 
   riddlersRevenge.timerId = setInterval(() => {
     this.randomGenerator();
@@ -105,10 +110,14 @@ riddlersRevenge.startTimer = function startTimer() {
 };
 
 riddlersRevenge.endGame = function endGame() {
+
   clearInterval(this.timerId);
+
+  riddlersRevenge.$overTheTop[0].play();
   this.$button.text('Replay');
   this.$button.show();
   this.$difficultyButton.show();
+  this.timer = 20;
   $( '.cell').hide();
   $( '#scoredisplay').hide();
   $('.finalScoreDisplay').text('score: ' + this.score).show();
@@ -138,7 +147,7 @@ riddlersRevenge.randomGenerator = function randomGenerator () {
 riddlersRevenge.setup = function setup(){
   this.speed = 2000;
   this.score = 0;
-  this.timer = 30;
+  this.timer = 20;
   this.timerId = null;
   this.text = $('.typewriter').text();
   this.length = this.text.length;
@@ -152,7 +161,14 @@ riddlersRevenge.setup = function setup(){
   this.$difficultyButton = $('.difficultyButton');
   this.$cells = $('.cell');
   riddlersRevenge.text = $('.typewriter').text();
-  this.$riddlerSound = $('#riddlerSound');
+  this.$laugh = $('#laugh');
+  this.$punch = $('#punch');
+  this.$explosion = $('#explosion');
+  this.$tick = $('#tick');
+  this.$overTheTop = $('#overTheTop');
+
+  $('.finalScoreDisplay').text('score: ' + this.score).hide();
+  $('.batlogo').hide();
 
   $('.cell').click(riddlersRevenge.hitCell.bind(this));
   //button only to be pressed once until the time runs out

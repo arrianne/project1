@@ -16,7 +16,7 @@
     <main>
 
       <div id="intro">
-       <p class="typewriter">Riddle me this.. riddle me that... who's afraid of the big, black bat? <br> Catch me if you can Batman</p>
+       <p class="typewriter">Riddle me this.. riddle me that... who's afraid of the big, black bat?... Catch me if you can Batman but mind those pesky bombs</p>
        <a id="easy" href="#gameBoard">Easy</a>
        <a id="medium" href="#gameBoard">Medium</a>
        <a id="hard" href="#gameBoard">Hard</a>
@@ -25,11 +25,11 @@
       </div>
 
       <div id="gameBoard">
-        <div id="timer">30</div>
+        <div id="timer">20</div>
         <button class="startButton">Start Game</button>
         <a class="difficultyButton" href="#intro">Choose Difficulty?</a>
         <div id="scoreboard">
-          <p id="scoredisplay">Score: 0</p>
+          <p id="scoredisplay">Score: </p>
         </div>
         <div class="batlogo">
           <img src="css/images/batlogo.jpg"/>
@@ -56,19 +56,23 @@
           </ul>
         </div>
 
-        <audio id="riddlerSound">
-          <source src="sounds/riddlerSound.wav" type="audio/mp3">
+        <audio id="laugh">
+          <source src="sounds/laugh.mp3" type="audio/mp3">
         </audio>
-        <!-- <audio id="riddlerSound">
-          <source src="sounds/riddlerSound.wav" type="audio/mp3">
+        <audio id="punch">
+          <source src="sounds/punch.mp3" type="audio/mp3">
         </audio>
-        <audio id="riddlerSound">
-          <source src="sounds/riddlerSound.wav" type="audio/mp3">
-        </audio> -->
+        <audio id="explosion">
+          <source src="sounds/explosion.mp3" type="audio/mp3">
+        </audio>
+        <audio id="tick">
+          <source src="sounds/tick.mp3" type="audio/mp3">
+        </audio>
+        <audio id="overTheTop">
+          <source src="sounds/overTheTop.wav" type="audio/mp3">
+        </audio>
 
-        <!-- <audio id="riddleMe" autoplay>
-          <source src="sounds/riddleme.wav" type="audio/mp3">
-        </audio> -->
+
 
       </div>
 

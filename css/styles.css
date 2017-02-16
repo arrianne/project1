@@ -40,6 +40,11 @@ h1 {
 
 }
 
+.winner {
+  color: rgb(51, 204, 51);
+  font-size: 20px;
+}
+
 /*intro screen styling*/
 #easy {
   color: rgb(51, 204, 51);
@@ -154,7 +159,7 @@ h1 {
 @keyframes myframes {
 
   from {color: rgb(51, 204, 51);}
-    to {color: yellow;}
+    to {color: rgb(153, 0, 204);}
 }
 
 
@@ -196,13 +201,13 @@ ul {
 li {
   border: 3px solid rgb(51, 204, 51);
   display: inline-block;
-  margin: 0;
+  margin: 2px;
   /*border: 0;*/
   padding: 0;
   box-sizing: border-box;
-  background-image: url("images/riddler.jpg");
+  background-image: url("images/question.jpg");
   background-position: center;
-  background-size: 120px 120px;
+  background-size: 200px 200px;
   width: 140px;
   height: 140px;
   position: relative;
@@ -219,9 +224,9 @@ li:after {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("images/riddlerface.jpg");
+  background-image: url("images/jimriddler.jpeg");
   background-position: center;
-  background-size: 120px 120px;
+  background-size: 180px 150px;
   cursor: url('images/batman.png'), auto;
   transition: all 0.2s ease;
 }
@@ -239,5 +244,61 @@ li.bomb:after {
   background-size: 160px;
 }
 .bomb:after {
-  background-image: url("images/bomb.jpg")
+  background-image: url("images/riddlerbomb.jpg")
 }
+
+
+/*responsive*/
+
+@media only screen and (max-width: 640px) {
+
+  #medium {
+    font-size: 25px;
+    display: block;
+    width: 270px;
+    height: 30px;
+
+
+}
+
+ #easy {
+   font-size: 25px;
+   display: block;
+   width: 270px;
+   height: 30px;
+
+
+ }
+
+ #hard {
+   font-size: 25px;
+   display: block;
+   width: 270px;
+   height: 30px;
+
+
+ }
+
+ #riddled {
+   font-size: 25px;
+   display: block;
+   width: 270px;
+   height: 30px;
+
+
+
+ }
+
+ .typewriter {
+
+   display: inline-block;
+   max-width: 400px;
+   margin: auto;
+   text-align: center;
+   width: 270px;
+
+
+
+
+ }
+ }

@@ -10,21 +10,22 @@ $(() => {
   const $medium = $('#medium');
   const $hard = $('#hard');
   const $riddled = $('#riddled');
+  const $winner = $('.winner');
   var $riddlerSound = $('#riddlerSound');
+  var timer = 30;
   // var $riddleMe = $('#riddleMe');
+  //typewriter text
+  var text = $('.typewriter').text();
+  var length = text.length;
+  var timeOut;
+  var character = 0;
+
   let bombOrMole = null;
   let bombOrMoleTimer = null;
 
 
 
-
-
 //Making intro text appear gradually
-  var text = $('.typewriter').text();
-
-  var length = text.length;
-  var timeOut;
-  var character = 0;
 
 
   (function typeWriter() {
@@ -91,9 +92,9 @@ $(() => {
 
 //timer
 
-  var timer = 30;
 
 
+  $( '.winner').hide();
 
   $button.on('click', startTimer);
 
@@ -105,6 +106,9 @@ $(() => {
     $('#scoredisplay').text('score: ' + score);
     //resetting the timer to 30
     timer = 30;
+    //hiding the end message
+    $( '.winner').hide();
+    $( '.cell').show();
     const timerId = setInterval(() => {
       RandomGenerator();
       //removing the mole class when clicked
@@ -143,15 +147,18 @@ $(() => {
         clearInterval(timerId);
 
 
+
         // timer = 5;
         // update the button text:
         $button.text('Replay');
         $button.show();
         $difficultyButton.show();
-
+        $( '.cell').hide();
+        $( '.winner').show();
 
       }
     }, speed);
+
 
     //hiding the start button so it can't be pressed during the game.
     $difficultyButton.hide();
@@ -160,6 +167,7 @@ $(() => {
       $button.show();
     },timer*30000);
   }
+
 
 
   //picks random cells to change

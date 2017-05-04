@@ -6,39 +6,22 @@ $(() => {
 
 var riddlersRevenge = riddlersRevenge || {};
 
-// Making intro text appear gradually
 
-riddlersRevenge.typewriter = (function typeWriter() {
-  const timeOut = setTimeout(function() {
-    this.character++;
-    var type = this.text.substring(0, this.character);
-    $('.typewriter').text(type);
-    typeWriter();
-
-    if (this.character === this.length) {
-      clearTimeout(timeOut);
-    }
-
-  }, 113);
-
-});
 
 
 riddlersRevenge.scrollToGame = function scrollToGame(e) {
 
-
-
   e.preventDefault();
 
+  //setting the speed for each difficulty level
   riddlersRevenge.level = $(e.target).attr('id');
 
-  //setting the speed for each difficulty level
   switch(riddlersRevenge.level) {
     case 'easy':
-      riddlersRevenge.speed = 1600;
+      riddlersRevenge.speed = 2000;
       break;
     case 'medium':
-      riddlersRevenge.speed = 1200;
+      riddlersRevenge.speed = 1400;
       break;
     case 'hard':
       riddlersRevenge.speed = 1000;
@@ -59,6 +42,8 @@ riddlersRevenge.scrollToGame = function scrollToGame(e) {
     window.location.hash = target;
   });
 };
+
+//clicking the riddler and bomb and adding or taking away points
 
 
 riddlersRevenge.hitCell = function hitCell(e) {
@@ -85,6 +70,8 @@ riddlersRevenge.hitCell = function hitCell(e) {
 
 };
 
+//starting the timer and displaying the score
+
 riddlersRevenge.startTimer = function startTimer() {
   riddlersRevenge.$tick[0].play();
   //resetting the score to zero
@@ -108,6 +95,8 @@ riddlersRevenge.startTimer = function startTimer() {
   }, this.speed);
 
 };
+
+//ending the game, clearing the timer and displaying the final score
 
 riddlersRevenge.endGame = function endGame() {
 
@@ -176,6 +165,23 @@ riddlersRevenge.setup = function setup(){
 
   this.$button.on('click', riddlersRevenge.startTimer.bind(this));
 
+
+  //slows down the anchor tag
+
+  (function typeWriter() {
+    this.timeOut = setTimeout(() => {
+      riddlersRevenge.character++;
+      const type = riddlersRevenge.text.substring(0, riddlersRevenge.character);
+      $('.typewriter').text(type);
+      typeWriter();
+
+      if (riddlersRevenge.character === length) {
+        clearTimeout(riddlersRevenge.timeOut);
+      }
+
+    }, 80);
+
+  }());
 
 };
 
